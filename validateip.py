@@ -6,6 +6,6 @@ def validateIP(ip):
     return all(
         s != '' and
         all(ch.isdigit() for ch in s) and
-        (0 <= int(s) <= 255)
+        0 <= int(s) <= 255
         for s in strs
     )
