@@ -5,8 +5,8 @@ def flatten_dictionary(d):
 
 def helper(prev, d, res):
     for k, v in d.items():
-        key = prev or k if not prev or not k else prev + '.' + k
+        k = prev or k if not prev or not k else prev + '.' + k
         if isinstance(v, dict):
-            helper(key, v, res)
+            helper(k, v, res)
         else:
-            res[key] = v
+            res[k] = v
