@@ -1,10 +1,10 @@
-def flatten_dictionary(dictionary):
+def flatten_dictionary(d):
     res = {}
-    helper('', dictionary, res)
+    helper('', d, res)
     return res
 
-def helper(prev, dictionary, res):
-    for k, v in dictionary.items():
+def helper(prev, d, res):
+    for k, v in d.items():
         key = prev or k if not prev or not k else prev + '.' + k
         if isinstance(v, dict):
             helper(key, v, res)
