@@ -17,3 +17,5 @@ def shifted_arr_search(a, n):
                 r = m - 1
             else:
                 l = m + 1
+
+assert shifted_arr_search([9, 12, 17, 2, 4, 5], 2) == 3

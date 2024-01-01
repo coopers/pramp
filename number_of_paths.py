@@ -5,3 +5,5 @@ def num_of_paths_to_dest(n):
             dp[j] += dp[j-1]
 
     return dp[-1]
+
+assert num_of_paths_to_dest(4) == 5

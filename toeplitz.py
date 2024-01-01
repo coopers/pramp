@@ -5,3 +5,19 @@ def isToeplitz(arr):
         for r in range(1, ROWS)
         for c in range(1, COLS)
     )
+
+assert isToeplitz(
+    [
+        [1,2,3,4],
+        [5,1,2,3],
+        [6,5,1,2]
+    ]
+) == True
+
+assert isToeplitz(
+    [
+        [1,2,3,4],
+        [5,1,9,3],
+        [6,5,1,2]
+    ]
+) == False

@@ -20,3 +20,13 @@ def get_number_of_islands(matrix):
                 dfs(r, c)
 
     return count
+
+assert get_number_of_islands(
+    [
+        [0,    1,    0,    1,    0],
+        [0,    0,    1,    1,    1],
+        [1,    0,    0,    1,    0],
+        [0,    1,    1,    0,    0],
+        [1,    0,    1,    0,    1]
+    ]
+) == 6

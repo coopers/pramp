@@ -27,3 +27,5 @@ def find_duplicates(lil, big):
                 b += 1
 
     return res
+
+assert find_duplicates([1, 2, 3, 5, 6, 7], [3, 6, 7, 8, 20]) == [3, 6, 7]
