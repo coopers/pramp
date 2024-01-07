@@ -1,14 +1,11 @@
 def get_different_number(arr):    
-  def swap(i, j):
-    arr[i], arr[j] = arr[j], arr[i]
-  
   n = len(arr)
   for i in range(n):
     while True:
       j = arr[i]
-      if j >= n or arr[j] == j:
+      if j >= n or i == j:
         break
-      swap(i, j)
+      arr[i], arr[j] = arr[j], arr[i]
   
   for i, num in enumerate(arr):
     if i != num:
