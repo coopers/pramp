@@ -45,8 +45,6 @@ class BinarySearchTree:
       
     return None
 
-
-
   # Given a binary search tree and a number, inserts a
   # new node with the given number in the correct place
   # in the tree. Returns the new root pointer which the
