@@ -1,7 +1,7 @@
 def find_pairs_with_given_difference(arr, k):
   # x = y + k
   s = set(arr)
-  return [[n + k, n] for n in arr if n + k in s]
+  return [[y + k, y] for y in arr if y + k in s]
 
 arr = [0, -1, -2, 2, 1]
 k = 1
