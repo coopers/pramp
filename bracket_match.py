@@ -1,7 +1,7 @@
 def bracket_match(text):
   opening = closing = 0
-  for b in text:
-    if b == '(':
+  for bracket in text:
+    if bracket == '(':
       opening += 1
     else:
       if opening > 0:
