@@ -1,10 +1,12 @@
 def validateIP(ip):
+    if not (6 < len(ip) < 16):
+        return False
+    
     strs = ip.split('.')
     if len(strs) != 4:
         return False
 
     return all(
-        len(s) > 0 and
         (len(s) == 1 or s[0] != '0') and
         s.isdigit() and
         0 <= int(s) <= 255
