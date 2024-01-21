@@ -5,7 +5,7 @@ def get_shortest_unique_substring(arr, s):
   res = ''
   for r in range(len(s)):
     if s[r] in counts:
-      if not counts[s[r]]:
+      if counts[s[r]] == 0:
         need -= 1
       counts[s[r]] += 1
       while not need:
@@ -13,7 +13,7 @@ def get_shortest_unique_substring(arr, s):
           res = s[l:r+1]
         if s[l] in counts:
           counts[s[l]] -= 1
-          if not counts[s[l]]:
+          if counts[s[l]] == 0:
             need += 1
         l += 1
         
