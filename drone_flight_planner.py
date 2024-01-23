@@ -1,5 +1,7 @@
 def calc_drone_min_energy(route):
-    return max(r[-1] for r in route) - route[0][-1]
+    INITIAL = 0
+    ALTITUDE = 2
+    return max(point[ALTITUDE] for point in route) - route[INITIAL][ALTITUDE]
 
 assert calc_drone_min_energy(
     [
