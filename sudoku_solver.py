@@ -45,7 +45,6 @@ def sudoku_solve(board):
       row[r].remove(guess)
       col[c].remove(guess)
       box[b].remove(guess)
-    
     return False
   
   return helper()
