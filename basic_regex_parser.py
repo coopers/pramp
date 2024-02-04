@@ -1,41 +1,32 @@
-def is_match(t, p):
-    # reach end of pattern
-    if len(p) == 0:
-        return len(t) == 0
+def is_match(text, pattern):
+    T, P = len(text), len(pattern)
 
-    # reach end of text
-    if len(t) == 0:
-        if len(p) > 1 and p[1] == '*':
-            return is_match(t, p[2:])
+    def helper(t, p):
+        # reach end of pattern
+        if p == P:
+            return t == T
+
+        # reach end of text
+        if t == T:
+            if p < P - 1 and pattern[p + 1] == '*':
+                return helper(t, p + 2)
+            return False
+
+        # pattern with asterisk
+        if p < P - 1 and pattern[p + 1] == '*':
+            if pattern[p] in ('.', text[t]):
+                return helper(t + 1, p) or helper(t, p + 2)
+            return helper(t, p + 2)
+
+        # pattern without asterisk
+        if pattern[p] in ('.', text[t]):
+            return helper(t + 1, p + 1)
         return False
 
-    # pattern with asterisk
-    if len(p) > 1 and p[1] == '*':
-        if p[0] in ('.', t[0]):
-            return is_match(t[1:], p) or is_match(t, p[2:])
-        return is_match(t, p[2:])
+    return helper(0, 0)
 
-    # pattern without asterisk
-    if p[0] in ('.', t[0]):
-        return is_match(t[1:], p[1:])
-    return False
-
-text = "aa"
-pattern = "a"
-assert is_match(text, pattern) == False
-
-text = "aa"
-pattern = "aa"
-assert is_match(text, pattern) == True
-
-text = "abc"
-pattern = "a.c"
-assert is_match(text, pattern) == True
-
-text = "abbb"
-pattern = "ab*"
-assert is_match(text, pattern) == True
-
-text = "acd"
-pattern = "ab*c."
-assert is_match(text, pattern) == True
+assert is_match("aa", "a") == False
+assert is_match("aa", "aa") == True
+assert is_match("abc", "a.c") == True
+assert is_match("abbb", "ab*") == True
+assert is_match("acd", "ab*c.") == True
