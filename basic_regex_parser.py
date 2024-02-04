@@ -2,11 +2,11 @@ def is_match(text, pattern):
     T, P = len(text), len(pattern)
 
     def helper(t, p):
-        # reach end of pattern
+        # end of pattern
         if p == P:
             return t == T
 
-        # reach end of text
+        # end of text
         if t == T:
             if p < P - 1 and pattern[p + 1] == '*':
                 return helper(t, p + 2)
