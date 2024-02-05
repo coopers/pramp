@@ -3,21 +3,20 @@
 
 def find_busiest_period(data):
     N = len(data)
-    best_time = None
+    busy_time = None
     max_count = None
     count = 0
     for i in range(N):
         time, amount, isPositive = data[i]
-        if isPositive:
-            count += amount
-        else:
-            count -= amount
+        count += amount * (1 if isPositive else -1)
+        if i < N - 1 and data[i + 1][0] == time:
+            continue
 
-        if (i == N - 1 or data[i + 1][0] != time) and (max_count is None or count > max_count):
+        if max_count is None or count > max_count:
             max_count = count
-            best_time = time
+            busy_time = time
 
-    return best_time
+    return busy_time
 
 
 data = [
