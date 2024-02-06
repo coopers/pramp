@@ -7,8 +7,8 @@ def find_busiest_period(data):
     max_count = None
     count = 0
     for i in range(N):
-        time, amount, is_positive = data[i]
-        count += amount * (1 if is_positive else -1)
+        time, num, is_positive = data[i]
+        count += num * (1 if is_positive else -1)
         if i < N - 1 and data[i + 1][0] == time:
             continue
 
