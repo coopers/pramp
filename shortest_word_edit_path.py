@@ -24,7 +24,7 @@ def shortestWordEditPath(source, target, words):
     transforms = {transform for word in words for transform in get_transforms(word) if transform in d}
     words = {word for transform in transforms for word in d[transform]}
     for transform in transforms:
-      d.pop(transform)
+      del d[transform]
 
   return -1
 
