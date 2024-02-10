@@ -4,12 +4,12 @@ def get_transforms(word):
   return [word[:i] + '*' + word[i+1:] for i in range(len(word))]
 
 def shortestWordEditPath(source, target, words):
-  s = set(words)
-  if target not in s:
+  words = set(words)
+  if target not in words:
     return -1
   
   transformToWords = defaultdict(set)
-  for word in s:
+  for word in words:
     for transform in get_transforms(word):
       transformToWords[transform].add(word)
 
@@ -21,7 +21,7 @@ def shortestWordEditPath(source, target, words):
       return count
     
     count += 1
-    transforms = {transform 
+    transforms = {transform
                     for word in words
                     for transform in get_transforms(word)
                     if transform in transformToWords}
