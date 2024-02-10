@@ -8,10 +8,10 @@ def shortestWordEditPath(source, target, words):
   if target not in s:
     return -1
   
-  d = defaultdict(set)
+  transformToWords = defaultdict(set)
   for word in s:
     for transform in get_transforms(word):
-      d[transform].add(word)
+      transformToWords[transform].add(word)
 
   words = set()
   words.add(source)
@@ -21,10 +21,17 @@ def shortestWordEditPath(source, target, words):
       return count
     
     count += 1
-    transforms = {transform for word in words for transform in get_transforms(word) if transform in d}
-    words = {word for transform in transforms for word in d[transform]}
+    transforms = {transform 
+                    for word in words
+                    for transform in get_transforms(word)
+                    if transform in transformToWords}
+    
+    words = {word
+                for transform in transforms
+                for word in transformToWords[transform]}
+    
     for transform in transforms:
-      del d[transform]
+      del transformToWords[transform]
 
   return -1
 
