@@ -13,9 +13,9 @@ def shortestWordEditPath(source, target, words):
     for transform in get_transforms(word):
       transformToWords[transform].add(word)
 
+  count = 0
   words = set()
   words.add(source)
-  count = 0
   while words:
     if target in words:
       return count
