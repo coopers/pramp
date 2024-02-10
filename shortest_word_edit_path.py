@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 def get_transforms(word):
-  return [word[:i] + '*' + word[i+1:] for i in range(len(word))]
+  return ["%s*%s" % (word[:i], word[i + 1:]) for i in range(len(word))]
 
 def shortestWordEditPath(source, target, words):
   words = set(words)
