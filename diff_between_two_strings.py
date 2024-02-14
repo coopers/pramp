@@ -21,13 +21,12 @@ def diffBetweenTwoStrings(source, target):
             res.append(source[s])
             s += 1
             t += 1
+        elif dp[s+1][t] <= dp[s][t+1]:
+            res.append('-' + source[s])
+            s += 1
         else:
-            if dp[s+1][t] <= dp[s][t+1]:
-                res.append('-' + source[s])
-                s += 1
-            else:
-                res.append('+' + target[t])
-                t += 1
+            res.append('+' + target[t])
+            t += 1
     
     while s < S:
         res.append('-' + source[s])
